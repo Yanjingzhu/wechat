@@ -8,11 +8,13 @@
     </block>
   </view>
   <view>
-  
-  <navigator url="../image/ppp">跳转到新页面</navigator>
-  
-  </view>
-  
+  <navigator url="../test2/page2">跳转到新页面</navigator>
+ 
+  <text>Hello {{name}}! </text>
+<button bindtap='changeName'>Click me!</button>
+<text bindtap='changemsg'>{{array[0].msg}}</text>
+
+   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>

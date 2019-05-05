@@ -1,7 +1,9 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function (t) {
+   console.log(t.scene)
     // 展示本地存储能力
+    //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
@@ -33,7 +35,30 @@ App({
       }
     })
   },
+ /* getUserInfo:function(cb){
+    var that=this;
+    if(this.globalData.userInfo){
+      typeof cb=="function" && cb(this.globalData.userInfo)
+    }else{
+wx.login({
+  success: function () {
+    wx.getUserInfo({
+      success: function (res) {
+        that.globalData.userInfo = res.userInfo;
+        typeof cb == "function" && cb(that.globalData.userInfo)
+      }
+    })
+}
+})
+    }
+  },  */
+  onPageNotFound(res) {
+    wx.redirectTo({
+      url: 'pages/...'
+    })
+  },
   globalData: {
     userInfo: null
   }
+
 })

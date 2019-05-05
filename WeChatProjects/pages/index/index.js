@@ -1,14 +1,31 @@
-﻿//index.js
+//index.js
 //获取应用6实例
 const app = getApp()
-
+var common = require('../common/common.js')
 Page({
+ 
   data: {
+   
+    name: 'wechat',
     motto: 'Hello World',
     yjz:'ziqing',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    array:[{msg:'1'},{msg:'2'}]
+  },
+  changeName: function (e) {
+    // sent data change to view.
+    this.setData({
+      name: 'MINA'
+    })
+   
+  },
+  changemsg: function()
+  {
+    this.setData({
+      array: [{ msg: '1_1' }, { msg: '2' }]
+    })
   },
   //事件处理函数
   bindViewTap: function() {
@@ -43,6 +60,16 @@ Page({
         }
       })
     }
+    //console.log('load hahaha !')
+    this.goodbyeMINA()
+    this.helloMINA()
+  },
+  
+  onShareAppMessage: function () {
+    return {
+      title: '自定义转发标题',
+      path: '/page/user?id=123'
+    }
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -51,5 +78,13 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  helloMINA: function () {
+   
+    common.sayHello('MINA')
+  },
+  goodbyeMINA: function () {
+    common.sayGoodbye('MINA')
   }
+
 })
